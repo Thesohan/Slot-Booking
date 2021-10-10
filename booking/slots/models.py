@@ -41,7 +41,6 @@ class Slot(AuditEnabledModel):
 
      @classmethod
      def book_slot(cls, slot_id):
-          breakpoint()
           with transaction.atomic():
                slot = (
                     cls.objects
@@ -49,9 +48,7 @@ class Slot(AuditEnabledModel):
                     .get(id=slot_id)
                )
                slot.available_seat -= 1
-               breakpoint()
                slot.save()
-               breakpoint()
           return BookSlot.objects.create(slot=slot)
 
      def save(self,*args,**kwargs):

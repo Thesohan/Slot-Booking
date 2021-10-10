@@ -7,7 +7,7 @@ from rest_framework import status
 # Create your views here.
 
 class SlotListAPIView(generics.ListAPIView):
-     queryset = Slot.objects.all().order_by('id')
+     queryset = Slot.objects.all().order_by('-available_seat')
      serializer_class = SlotSerializer
 
 
