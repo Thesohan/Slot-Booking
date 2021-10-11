@@ -47,9 +47,10 @@ class Slot(AuditEnabledModel):
                     .select_for_update(nowait=False)
                     .get(id=slot_id)
                )
+               breakpoint()
                slot.available_seat -= 1
                slot.save()
-          return BookSlot.objects.create(slot=slot)
+               return BookSlot.objects.create(slot=slot)
 
      def save(self,*args,**kwargs):
           self.full_clean()
